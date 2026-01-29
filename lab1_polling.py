@@ -2,16 +2,16 @@ import RPi.GPIO as GPIO
 import time
 
 #PIN NUMS
-LED1_RED, LED1_GREEN, LED1_BLUE = 1, 2, 3
+LED1_RED, LED1_GREEN, LED1_BLUE = 17, 27, 22
 LED1 = [LED1_RED, LED1_GREEN, LED1_BLUE]
 
-LED2_RED, LED2_GREEN, LED2_BLUE = 4, 5, 6
+LED2_RED, LED2_GREEN, LED2_BLUE = 5, 6, 13
 LED2 = [LED2_RED, LED2_GREEN, LED2_BLUE]
 
-COUNT_SEG_A, COUNT_SEG_B, COUNT_SEG_C, COUNT_SEG_D, COUNT_SEG_E, COUNT_SEG_F, COUNT_SEG_G = 7, 8, 9, 10, 11, 12, 13
+COUNT_SEG_A, COUNT_SEG_B, COUNT_SEG_C, COUNT_SEG_D, COUNT_SEG_E, COUNT_SEG_F, COUNT_SEG_G = 12, 16, 20, 21, 25, 24, 23
 COUNT_SEGS = [COUNT_SEG_A, COUNT_SEG_B, COUNT_SEG_C, COUNT_SEG_D, COUNT_SEG_E, COUNT_SEG_F, COUNT_SEG_G]
 
-BUTTON = 14
+BUTTON = 18
 
 def set_LED1(red, green, blue):
     GPIO.output(LED1, (red, green, blue))
@@ -97,7 +97,7 @@ def main():
             set_LED1 = (1,0,0)
             poll()
             run()
-            time.sleep(1) #prevent spamming
+            time.sleep(20) #cooldown
     finally:
         GPIO.cleanup()
 
