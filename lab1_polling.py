@@ -21,16 +21,16 @@ def set_LED2(red, green, blue):
 
 
 DIGIT_ORDER = [
-    [1,1,1,1,1,1,0], #0
-    [0,1,1,0,0,0,0], #1
-    [1,1,0,1,1,0,1],#2
-    [1,1,1,1,0,0,1],#3
-    [0,1,1,0,0,1,1],#4
-    [1,0,1,1,0,1,1],#5
-    [1,0,1,1,1,1,1],#6
-    [1,1,1,0,0,0,0],#7
+    [1,0,1,1,1,1,1], #0
+    [1,0,0,0,1,0,0], #1
+    [0,1,0,1,1,1,1],#2
+    [1,1,0,1,1,1,0],#3
+    [1,1,1,0,1,0,0],#4
+    [1,1,1,1,0,1,0],#5
+    [1,1,1,1,0,1,1],#6
+    [1,0,0,1,1,0,0],#7
     [1,1,1,1,1,1,1],#8
-    [1,1,1,1,0,1,1]#9
+    [1,1,1,1,1,1,0]#9
 ]
 
 def digit(num):
@@ -103,10 +103,10 @@ def main():
     set_LED2(0,1,0)
     set_LED1(1,0,0)
 
-    segment_test(on_level=1)   # for common cathode (HIGH=on)
-    segment_test(on_level=0)   # for common anode (LOW=on)
+    #segment_test(on_level=1)   # for common cathode (HIGH=on)
+    #segment_test(on_level=0)   # for common anode (LOW=on)
 
-    '''
+    
 
     try:
         while True:
@@ -117,7 +117,7 @@ def main():
             time.sleep(20) #cooldown
     finally:
         GPIO.cleanup()
-    '''
+    
 
 if __name__ == "__main__":
     main()
