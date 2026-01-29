@@ -76,6 +76,18 @@ def run():
     set_LED2(0, 1, 0)
 
 
+SEG_NAMES = ["A","B","C","D","E","F","G"]
+
+def segment_test(on_level=1):
+    GPIO.output(COUNT_SEGS, 0 if on_level == 1 else 1)  # all off
+    for idx, pin in enumerate(COUNT_SEGS):
+        GPIO.output(COUNT_SEGS, 0 if on_level == 1 else 1)  # all off
+        GPIO.output(pin, on_level)  # turn one on
+        print("This should be segment", SEG_NAMES[idx], "on pin", pin)
+        time.sleep(1)
+    GPIO.output(COUNT_SEGS, 0 if on_level == 1 else 1)
+
+
 def main():
     GPIO.setmode(GPIO.BCM)
 
@@ -91,6 +103,11 @@ def main():
     set_LED2(0,1,0)
     set_LED1(1,0,0)
 
+    segment_test(on_level=1)   # for common cathode (HIGH=on)
+    segment_test(on_level=0)   # for common anode (LOW=on)
+
+    '''
+
     try:
         while True:
             set_LED2(0,1,0)
@@ -100,7 +117,7 @@ def main():
             time.sleep(20) #cooldown
     finally:
         GPIO.cleanup()
-
+    '''
 
 if __name__ == "__main__":
     main()
