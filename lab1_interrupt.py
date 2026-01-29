@@ -110,39 +110,7 @@ def main():
         print("\nExiting program.")
     finally:
         GPIO.cleanup()
-'''
-def main():
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
 
-    GPIO.setup(LED1, GPIO.OUT)
-    GPIO.setup(LED2, GPIO.OUT)
-    GPIO.setup(COUNT_SEGS, GPIO.OUT)
-
-    GPIO.setup(BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
-    try:
-        GPIO.add_event_detect(
-            BUTTON,
-            GPIO.FALLING,
-            callback=button_pressed_callback,
-            bouncetime=200
-        )
-        print("Interrupt attached successfully")
-    except RuntimeError as e:
-        print("INTERRUPT FAILED:", e)
-        GPIO.cleanup()
-        return
-
-    print("Waiting for button...")
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        pass
-    finally:
-        GPIO.cleanup()
-'''
 
 if __name__ == "__main__":
     main()
