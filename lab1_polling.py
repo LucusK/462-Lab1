@@ -37,7 +37,7 @@ def digit(num):
     order = DIGIT_ORDER[num]
     GPIO.output(COUNT_SEGS, order)
 
-def poll():
+def poller():
     #button reads 0 when pressed
     while True:
         if GPIO.input(BUTTON) == 0:
@@ -85,17 +85,17 @@ def main():
         #GPIO.setup(pin, GPIO.OUT)
     GPIO.output(OUTPUT_PINS, GPIO.LOW)
 
-    GPIO.setup(BUTTON, GPIO.IN)
+    GPIO.setup(BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     #start
-    set_LED2 = (0,1,0)
-    set_LED1 = (1,0,0)
+    set_LED2(0,1,0)
+    set_LED1(1,0,0)
 
     try:
         while True:
-            set_LED2 = (0,1,0)
-            set_LED1 = (1,0,0)
-            poll()
+            set_LED2(0,1,0)
+            set_LED1(1,0,0)
+            poller()
             run()
             time.sleep(20) #cooldown
     finally:
